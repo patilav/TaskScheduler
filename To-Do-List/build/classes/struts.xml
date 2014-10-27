@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="taskManager" extends="struts-default">
+		
+		<action name="login" class="action.LoginCheck" method="execute">
+			<result name="admin">success_admin.jsp</result>
+			<result name="customer">success_customer.jsp</result>
+			<result name="error">customer_login_again.jsp</result>
+		</action>
+		
+		<action name="register" class="action.RegisterAction" method="execute">
+			<result name="done">customer_login.jsp</result>
+			<result name="input">register.jsp</result>
+		</action>
+
+		
+	</package>
+</struts>
