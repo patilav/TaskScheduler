@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,43 +10,35 @@ import DbConnection.connection;
 
 public class RegisterDAO {
 
-	
-	Connection con = null;
-	Statement st = null;
-	ResultSet rs = null;
-	public String registerCustomer(String fname, String lname, String username, String password, String dob, String secretQuestion, String secretAnswer) {
+	Connection con;
+	public boolean registerCustomer(String fname, String lname, String username, String password, String dob, String secretquestion, String secretanswer) {
 	
 		connection c = new connection();
 		con = c.getConnection();
 		try {
+			String query = "insert into user(username, password, firstname, lastname, dateofbirth, secretquestion, secretanswer)"
+					+ "values (?,?,?,?,?,?,?)";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			preparedStmt.setString(1, username);
+			preparedStmt.setString(2, password);
+			preparedStmt.setString(3, fname);
+			preparedStmt.setString(4, lname);
+			preparedStmt.setString(5, dob);
+			preparedStmt.setString(6, secretquestion);
+			preparedStmt.setString(7, secretanswer);
 			
-			st = con.createStatement();
-			rs = st.executeQuery("insert into customer(username, fname, lname, password, dob, secret_question, secret_answer) values ('"+username+"','"+fname+"','"+lname+"','"+password+"',to_date('"+dob+"','dd/mm/yyyy'),'"+secretQuestion+"','"+secretAnswer+"')");
+			boolean status = preparedStmt.execute();
+			System.out.println(status);
+			con.close();
+			return status;
 			
-			while(rs.next())
-			{
-				System.out.println("customer details added");
-				return "done";
-				
-			}
-		
 		} 
 		
 		catch (SQLException e) {
+			System.out.println("Found an error");
 			e.printStackTrace();
 		}
-		
-		if(rs!=null)
-		{
-		try {
-			rs.close();
-			st.close();
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		}
-		return "invalid";
+		return false;
 	}
 }
 

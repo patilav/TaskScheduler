@@ -34,6 +34,7 @@ color:white;
 <hr>
 <h3 id="welcome">Welcome ... <%= session.getAttribute("name") %></h3>
 <CENTER>
+<a href="event_add.jsp" style="color:white">ADD NEW EVENT</a>
 
 <bR>
 <a href="logout.jsp" style="color:white">LOGOUT</a>

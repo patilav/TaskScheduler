@@ -33,8 +33,8 @@ public class LoginCheck extends ActionSupport implements ModelDriven<LoginBean>,
 		
 	String role = null;
 	LoginDAO obj = new LoginDAO();
-	System.out.println(lb.getUsername());
-	System.out.println(lb.getPassword());
+	//System.out.println(lb.getUsername());
+	//System.out.println(lb.getPassword());
 	
 	role=obj.validateLogin(lb.getUsername(),lb.getPassword());
 	
@@ -46,10 +46,10 @@ public class LoginCheck extends ActionSupport implements ModelDriven<LoginBean>,
 		return "admin";
 	}
 	
-	else  if(role.equals("customer"))
+	else  if(role.equals("match"))
 	{
 		map.put("name", lb.getUsername());
-		return "customer";
+		return "user";
 	}
 	else{
 		return "error";

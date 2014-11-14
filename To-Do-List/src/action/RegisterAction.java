@@ -15,7 +15,7 @@ import dao.RegisterDAO;
 
 public class RegisterAction extends ActionSupport implements ModelDriven<RegisterBean>, SessionAware{
 
-	String status=null;
+	boolean status;
 	RegisterBean rb;
 	
 		
@@ -38,7 +38,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<Registe
 	status=rd.registerCustomer(rb.getFname(),rb.getLname(),rb.getUsername(),rb.getPassword(),rb.getDob(),rb.getSecretQuestion(),rb.getSecretAnswer());
 	
 	//System.out.println(status);
-	if(status.equals("done"))
+	if(status = true)
 		{
 		return "done";
 		}

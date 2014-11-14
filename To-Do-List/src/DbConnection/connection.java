@@ -16,9 +16,9 @@
 		public Connection getConnection() {
 				
 			try {
-				String driverName = "oracle.jdbc.driver.OracleDriver";
-				String url = "jdbc:oracle:thin:@localhost:1521:XE";
-				String uname = "system";
+				String driverName = "com.mysql.jdbc.Driver";
+				String url = "jdbc:mysql://localhost/myorganiser";
+				String uname = "mydb";
 				String pwd = "mayu1009";
 				Class.forName(driverName);
 				System.out.println("Driver Registered");
@@ -27,6 +27,7 @@
 			//	return con;
 			} 
 			catch (Exception e) {
+				System.out.println("ERROR: Unable to Connect to Database.");
 				e.printStackTrace();
 			}
 			return con;
