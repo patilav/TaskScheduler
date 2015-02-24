@@ -1,7 +1,7 @@
 package bean;
 
+import java.util.Date;
 import java.util.List;
-
 public class RegisterBean {
 	
 	private String fname;
@@ -13,8 +13,36 @@ public class RegisterBean {
 	private String secretQuestion;
 	private String secretAnswer;
 	private List<RegisterBean> reg;
+	private Date currdate;
+	private String homePhone;
+	private String workPhone;
+	private String mobilePhone;
+
+	public String getHomePhone() {
+		return homePhone;
+	}
+	public void setHomePhone(String homePhone) {
+		this.homePhone = homePhone;
+	}
+	public String getWorkPhone() {
+		return workPhone;
+	}
+	public void setWorkPhone(String workPhone) {
+		this.workPhone = workPhone;
+	}
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
+	}
 	
-	
+	public Date getCurrdate() {
+		return currdate; 
+	}
+	public void setCurrdate(Date currdate) {
+		this.currdate = new Date();
+	}
 	public List<RegisterBean> getReg() {
 		return reg;
 	}
@@ -69,8 +97,4 @@ public class RegisterBean {
 	public void setSecretAnswer(String secretAnswer) {
 		this.secretAnswer = secretAnswer;
 	}
-	
-		
-	
-
 }
